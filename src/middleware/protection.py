@@ -33,6 +33,8 @@ def deny_reason(tool_name: str, arguments: dict[str, Any]) -> str | None:
     Return a denial message or None if the call may proceed.
 
     """
+    if tool_name == "run_command":
+        return None
 
     if tool_name not in _FILE_TOOLS: # if the tool_name is not of the _FILE_TOOLS we return None and don't deny
         return None

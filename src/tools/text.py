@@ -29,7 +29,7 @@ def looks_like_escaped_source(text: str) -> bool:
     if "\\n" not in text: # If the given text doesn't have any new line escape sequence, the llm might have generted a single line output
         return False
 
-    return text.count("\\n") <= 1 # Or if the count of escape sequence is <=1
+    return text.count("\n") <= 1 # Or if the count of escape sequence is <=1
 
 
 def normalize_source_text(text: str) -> str:

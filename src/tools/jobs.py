@@ -12,11 +12,12 @@ import subprocess  # Using the subprocess command we will be able to spin up a n
 
 
 # There can be process which can be running in the background
+@dataclass
 class BackgroundJob:
     pid: int # Each process that is spin up has unique id which is of int
     command: str # This is the bash command that got executed which created this process
     started_at: str # The time in which this process has started
-    log_path: str # This is the file path the logs for this process gets stored
+    log_path: Path | str # This is the file path the logs for this process gets stored
     proc: Any = field(default=None, repr=False) # this 'proc' field holds the python wrapper of the process and the default value is None , repr = False makes this
                                                 # 'proc' field not to appear when we are doing any sort of printing of this BackgroundJob object.
                                                 # This 'proc' property will have value when this background job is created by the agent

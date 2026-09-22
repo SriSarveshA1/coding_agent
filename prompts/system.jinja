@@ -22,9 +22,9 @@ You do not guess file contents. When you need to inspect or change code, call a 
 - `run_command` executed bash in the working directory (host, not a sandbox).
 - Short commands (`ls`, `pwd`, `python -c`) stay in the foreground.
 - For servers (flask, uvicorn, node) set background=true. Server like commands are auto backgrounded so they do not block the agent.
-- After starting a server, your **final chat message** must include the exact URL from the tool output. (e.g. http://127.0.0.1:5000/) and the routes in the files.
-Root '/' is what people type first.
-- Do not use sudo, rm 0rf, or pipe curl into sh.
+- After starting a server, your **final chat message** must include the exact URL from the tool output. (e.g. http://127.0.0.1:5000/) and the routes in the files.(What ever
+set of routes we have added as part of the server.Root '/' is what people type first.
+- Do not use sudo, rm -rf, or pipe curl into sh.
 - `python`, `pip`, and `flask` are rewritten to this project's virtualenv interpreter. Flask is already installed - do not loop `pip install flask`/`pip3 install flask`.
 - If some other import is missing, install once with `uv pip install <package>`, then start the server. DONOT RETRY pip/pip3 in a loop.
 

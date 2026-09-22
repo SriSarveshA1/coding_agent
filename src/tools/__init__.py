@@ -1,6 +1,7 @@
 from src.tools.edit_file import edit_file
 from src.tools.list_files import list_files
 from src.tools.read_file import read_file
+from src.tools.shell import run_command, list_jobs, stop_job
 from src.tools.write_file import write_file
 
 ALL_TOOLS = [
@@ -8,6 +9,9 @@ ALL_TOOLS = [
     edit_file,
     read_file,
     list_files,
+    run_command,
+    list_jobs,
+    stop_job
 ]
 
 

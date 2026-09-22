@@ -14,7 +14,7 @@ def render_template(name: str, **context) -> str: # name of the template file , 
 
 def build_system_prompt(
     *,
-    agent_name: str = AGENT_NAME,
+    agent_name: str =  AGENT_NAME,
     extra_guidance: str = "",
 ) -> str:
     return render_template(
