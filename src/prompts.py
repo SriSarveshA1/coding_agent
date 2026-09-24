@@ -30,7 +30,7 @@ def build_greeting(
     agent_name: str = AGENT_NAME,
 ) -> str:
     return render_template(
-        "greeting.jinja",
+        "greetings.jinja",
         agent_name=agent_name,
         work_dir=str(get_work_dir())
     )

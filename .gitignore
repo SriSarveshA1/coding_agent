@@ -1,1 +1,5 @@
 .idea*
+# Local env overrides (keep .env.example committed)
+.env
+.env.local
+.env.example
