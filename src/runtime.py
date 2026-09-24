@@ -67,16 +67,18 @@ def parse_invoke_result(result: Any) -> AgentTurnResult:
 
 def start_turn(agent, user_text: str, config: dict) -> AgentTurnResult: # This function starts the turn(like a new conversation)
     # This agent.invoke() keeps on running until either the result is produced or any interrupt has happened due to the policy setup in the HumanIntheLoopMiddleware
-
+    print("Content to send to the agent in the start_turn",user_text)
     result = agent.invoke(
         {"messages": [{"role": "user", "content": user_text}]},  # We are setting the role as 'user'
         config=config, # This config has the thread_id information
         version="v2" # This is just the version of agent.invoke() function
     )
+    print("result from the agent in the start_turn", result)
     return parse_invoke_result(result)
 
 def resume_turn(agent, decisions: list[dict], config: dict) -> AgentTurnResult:
     # We can use this function when there is an HITL interrupt and we want to pass decisions of the interrupt to the agent again.
+    print("content to send to agent in the resume turn",decisions)
     result = agent.invoke(
         # This command object tells the agent what decision we have made for the interrupt that is causes
         Command(resume={ # We are going to set the resume property of the command
@@ -85,6 +87,7 @@ def resume_turn(agent, decisions: list[dict], config: dict) -> AgentTurnResult:
         config=config,
         version="v2"
     )
+    print("result from te agent in the resume_turn", result)
     return parse_invoke_result(result)
 
 

@@ -1,5 +1,6 @@
-import datetime
+
 import json
+from datetime import datetime, UTC
 from typing import Callable, Any
 
 from langchain.agents.middleware import AgentMiddleware
@@ -25,7 +26,7 @@ class AuditMiddleware(AgentMiddleware):
         if isinstance(result, ToolMessage):
             preview = str(result.content)[:200] # We are only logging 200 characters for simplicity
         self._write({
-            "timestamp": datetime.now(datetime.UTC).isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             "tool": request.tool_call.get("name"),
             "result_preview": preview,
             "arguments": request.tool_call.get("args"),
